@@ -1,3 +1,13 @@
-import { createConnection } from "typeorm";
+import { createConnection, getConnection as getConnectionTypeORM } from "typeorm";
 
-createConnection();
+export const initConnection = async () => createConnection();
+
+export const getConnection = () => {
+  let conn = getConnectionTypeORM();
+
+  if (!conn) {
+    throw new Error("Database is not connected");
+  }
+
+  return conn;
+};

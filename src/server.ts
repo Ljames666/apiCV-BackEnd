@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import express from "express";
 import cors from "cors";
-import "./core/database/connection";
+
 import { routerUsers } from "./features/routers/UsersRouters";
 import { routerSkills } from "./features/routers/SkillsRouters";
 import { routerSkill_Files } from "./features/routers/Skills_FilesRouters";
@@ -22,6 +22,7 @@ import { routerEducation_Comments } from "./features/routers/EducationAndCertifi
 import { routerEducation } from "./features/routers/EducationAndCertificationsRouters";
 import { routerContacts } from "./features/routers/ContactsRouters";
 import { routerComments } from "./features/routers/CommentsRouters";
+import { initConnection } from "./core/database/connection/Database";
 
 const app = express();
 const port = process.env.PORT || 8081;
@@ -51,4 +52,9 @@ app.use(
   routerComments
 );
 
-app.listen(port, () => console.log("server is running on select port"));
+initConnection()
+  .then(() => app.listen(port, () => console.log("server is running on select port")))
+  .catch((error) => {
+    console.log("Error at creating connection with database");
+    console.log(error);
+  });
