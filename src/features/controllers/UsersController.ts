@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   CreateUsersService,
   DeleteUsersService,
+  GetIdUsersService,
   GetUsersService,
   UpdateUsersService,
 } from "../../core/services/UsersServices";
@@ -29,6 +30,22 @@ export class GetUsersController {
     const users = await service.execute();
 
     return response.json(users);
+  }
+}
+export class GetIdUsersController {
+  async handle(request: Request, response: Response) {
+    const id = request.params.id;
+
+    const service = new GetIdUsersService();
+
+    const users = await service.execute();
+
+    const user = users.findIndex((user) => user.id === id);
+    if (user >= 0) {
+      return response.json(users[user]);
+    } else {
+      return new Error();
+    }
   }
 }
 
