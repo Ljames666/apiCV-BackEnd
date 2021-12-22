@@ -1,5 +1,14 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { EducationAndCertifications_Files } from "./EducationAndCertifications_Files";
 import { Users } from "./Users";
 
 @Entity("educationAndCertification")
@@ -34,6 +43,9 @@ export class EducationAndCertifications {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @OneToMany(() => EducationAndCertifications_Files, (education) => education.educationCt_id)
+  files: EducationAndCertifications_Files[];
 
   constructor() {
     if (!this.id) {

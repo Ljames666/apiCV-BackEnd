@@ -1,5 +1,14 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Projects_Files } from "./Projects_Files";
 import { Users } from "./Users";
 
 @Entity("projects")
@@ -25,6 +34,9 @@ export class Projects {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @OneToMany(() => Projects_Files, (projects) => projects.project_id)
+  files: Projects_Files;
 
   constructor() {
     if (!this.id) {

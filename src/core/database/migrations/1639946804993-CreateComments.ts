@@ -13,7 +13,17 @@ export class CreateComments1639946804993 implements MigrationInterface {
 
           { name: "message", type: "varchar" },
 
+          { name: "user_id", type: "uuid" },
+
           { name: "created_at", type: "timestamp", default: "now()" },
+        ],
+        foreignKeys: [
+          {
+            name: "comments_user_fk",
+            columnNames: ["user_id"],
+            referencedTableName: "users",
+            referencedColumnNames: ["id"],
+          },
         ],
       })
     );

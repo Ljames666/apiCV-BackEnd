@@ -38,6 +38,29 @@ export class GetUsersService {
     return users;
   }
 }
+export class GetIdUsersService {
+  async execute() {
+    const repository = getRepository(Users);
+
+    const user = await repository.find({
+      relations: [
+        "address",
+        "emailAddress",
+        "phone",
+        "socialNetworks",
+        "educationAndCertifications",
+        "professionalExperiences",
+        "projects",
+        "skills",
+        "languages",
+        "contacts",
+        "comments",
+      ],
+    });
+
+    return user;
+  }
+}
 
 export class UpdateUsersService {
   async execute({ id, name, title, abstract }: UpdateUsersRequest): Promise<Users | Error> {
