@@ -11,7 +11,7 @@ import { v4 as uuid } from "uuid";
 import { ProfessionalExperiences_Files } from "./ProfessionalExperiences_Files";
 import { Users } from "./Users";
 
-@Entity("professinalExperiences")
+@Entity("professionalExperiences")
 export class ProfessionalExperiences {
   @PrimaryColumn()
   id: string;

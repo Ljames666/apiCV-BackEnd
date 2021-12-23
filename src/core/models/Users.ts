@@ -29,37 +29,37 @@ export class Users {
   @CreateDateColumn()
   created_at: Date;
 
-  @OneToMany(() => Address, (address) => address.user_id)
+  @OneToMany(() => Address, (address) => address.users)
   address: Address[];
 
-  @OneToMany(() => EmailAddress, (email) => email.user_id)
+  @OneToMany(() => EmailAddress, (email) => email.users)
   email: EmailAddress[];
 
-  @OneToMany(() => Phone, (phone) => phone.user_id)
+  @OneToMany(() => Phone, (phone) => phone.users)
   phone: Phone[];
 
-  @OneToMany(() => SocialNetworks, (socialNetworks) => socialNetworks.user_id)
+  @OneToMany(() => SocialNetworks, (socialNetworks) => socialNetworks.users)
   socialNetworks: SocialNetworks[];
 
-  @OneToMany(() => EducationAndCertifications, (education) => education.user_id)
+  @OneToMany(() => EducationAndCertifications, (education) => education.users)
   educations: EducationAndCertifications[];
 
-  @OneToMany(() => ProfessionalExperiences, (pro) => pro.user_id)
+  @OneToMany(() => ProfessionalExperiences, (pro) => pro.users)
   professionalExperiences: ProfessionalExperiences[];
 
-  @OneToMany(() => Projects, (project) => project.user_id)
+  @OneToMany(() => Projects, (project) => project.users)
   projects: Projects[];
 
-  @OneToMany(() => Languages, (languages) => languages.user_id)
+  @OneToMany(() => Languages, (languages) => languages.users)
   languages: Languages[];
 
-  @OneToMany(() => Skills, (skills) => skills.user_id)
+  @OneToMany(() => Skills, (skills) => skills.users)
   skills: Skills[];
 
-  @OneToMany(() => Contacts, (contacts) => contacts.user_id)
+  @OneToMany(() => Contacts, (contacts) => contacts.users)
   contacts: Contacts[];
 
-  @OneToMany(() => Comments, (commit) => commit.user_id)
+  @OneToMany(() => Comments, (commit) => commit.users)
   comments: Comments[];
 
   constructor() {
