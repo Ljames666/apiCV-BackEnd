@@ -13,7 +13,7 @@ routerUsers.post("/users", new CreateUsersController().handle);
 
 routerUsers.get("/users", new GetUsersController().handle);
 
-routerUsers.get("/users/:id", new GetIdUsersController().handle);
+routerUsers.get("/users/and-all", new GetIdUsersController().handle);
 
 routerUsers.put("/users/:id", new UpdateUsersController().handle);
 

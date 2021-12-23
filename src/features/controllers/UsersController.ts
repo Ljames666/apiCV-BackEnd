@@ -34,21 +34,11 @@ export class GetUsersController {
 }
 export class GetIdUsersController {
   async handle(request: Request, response: Response) {
-    const id = request.params.id;
-
     const service = new GetIdUsersService();
 
     const users = await service.execute();
 
-    const user = users.forEach((element) => {
-      if (id === element.id) {
-        response.json(element);
-      } else {
-        new Error();
-      }
-    });
-
-    return user;
+    return response.json(users);
   }
 }
 
