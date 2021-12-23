@@ -11,7 +11,7 @@ import { v4 as uuid } from "uuid";
 import { EducationAndCertifications_Files } from "./EducationAndCertifications_Files";
 import { Users } from "./Users";
 
-@Entity("educationAndCertification")
+@Entity("educationAndCertifications")
 export class EducationAndCertifications {
   @PrimaryColumn()
   id: string;
