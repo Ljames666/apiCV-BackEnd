@@ -11,7 +11,7 @@ export class CreateSocialNetworks1639945778714 implements MigrationInterface {
 
           { name: "name", type: "varchar" },
 
-          { name: "url", type: "numeric" },
+          { name: "url", type: "varchar" },
 
           { name: "icon", type: "varchar" },
 
