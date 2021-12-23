@@ -36,6 +36,7 @@ export class Projects {
   created_at: Date;
 
   @OneToMany(() => Projects_Files, (projects) => projects.project_id)
+  @JoinColumn()
   files: Projects_Files;
 
   constructor() {

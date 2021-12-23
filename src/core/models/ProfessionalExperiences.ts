@@ -45,6 +45,7 @@ export class ProfessionalExperiences {
   created_at: Date;
 
   @OneToMany(() => ProfessionalExperiences_Files, (pro) => pro.proEx_id)
+  @JoinColumn()
   files: ProfessionalExperiences_Files[];
 
   constructor() {

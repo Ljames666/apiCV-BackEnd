@@ -45,6 +45,7 @@ export class EducationAndCertifications {
   created_at: Date;
 
   @OneToMany(() => EducationAndCertifications_Files, (education) => education.educationCt_id)
+  @JoinColumn()
   files: EducationAndCertifications_Files[];
 
   constructor() {

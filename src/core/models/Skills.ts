@@ -33,6 +33,7 @@ export class Skills {
   created_at: Date;
 
   @OneToMany(() => Skills_Files, (skills) => skills.skill_id)
+  @JoinColumn()
   files: Skills_Files[];
 
   constructor() {
