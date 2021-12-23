@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import express from "express";
 import cors from "cors";
-
 import { routerUsers } from "./features/routers/UsersRouters";
 import { routerSkills } from "./features/routers/SkillsRouters";
 import { routerSkill_Files } from "./features/routers/Skills_FilesRouters";
@@ -19,34 +18,32 @@ import { routerEducation } from "./features/routers/EducationAndCertificationsRo
 import { routerContacts } from "./features/routers/ContactsRouters";
 import { routerComments } from "./features/routers/CommentsRouters";
 import { initConnection } from "./core/database/connection/Database";
+const app = express();
+const port = process.env.PORT || 8081;
+
+app.use(express.json(), cors());
+
+app.use(
+  routerUsers,
+  routerSkills,
+  routerSkill_Files,
+  routerProjects,
+  routerProject_Files,
+  routerProfessional,
+  routerPro_Files,
+  routerPhone,
+  routerAddress,
+  routerLanguages,
+  routerFiles,
+  routerEmailAddress,
+  routerEducation_Files,
+  routerEducation,
+  routerContacts,
+  routerComments
+);
+
 initConnection()
-  .then(() => {
-    const app = express();
-    const port = process.env.PORT || 8081;
-
-    app.use(express.json(), cors());
-
-    app.use(
-      routerUsers,
-      routerSkills,
-      routerSkill_Files,
-      routerProjects,
-      routerProject_Files,
-      routerProfessional,
-      routerPro_Files,
-      routerPhone,
-      routerAddress,
-      routerLanguages,
-      routerFiles,
-      routerEmailAddress,
-      routerEducation_Files,
-      routerEducation,
-      routerContacts,
-      routerComments
-    );
-
-    app.listen(port, () => console.log("server is running on select port"));
-  })
+  .then(() => app.listen(port, () => console.log("server is running on select port")))
   .catch((error) => {
     console.log("Error at creating connection with database");
     console.log(error);
