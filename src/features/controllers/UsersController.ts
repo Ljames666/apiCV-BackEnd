@@ -40,12 +40,15 @@ export class GetIdUsersController {
 
     const users = await service.execute();
 
-    const user = users.findIndex((user) => user.id === id);
-    if (user >= 0) {
-      return response.json(users[user]);
-    } else {
-      return new Error();
-    }
+    const user = users.forEach((element) => {
+      if (id === element.id) {
+        response.json(element);
+      } else {
+        new Error();
+      }
+    });
+
+    return user;
   }
 }
 
