@@ -18,6 +18,7 @@ import { routerEducation } from "./features/routers/EducationAndCertificationsRo
 import { routerContacts } from "./features/routers/ContactsRouters";
 import { routerComments } from "./features/routers/CommentsRouters";
 import { initConnection } from "./core/database/connection/Database";
+import { routerSocialNetworks } from "./features/routers/SocialNetworksRouters";
 const app = express();
 const port = process.env.PORT || 8081;
 
@@ -39,7 +40,8 @@ app.use(
   routerEducation_Files,
   routerEducation,
   routerContacts,
-  routerComments
+  routerComments,
+  routerSocialNetworks
 );
 
 initConnection()
