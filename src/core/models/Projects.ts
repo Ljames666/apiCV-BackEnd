@@ -35,6 +35,12 @@ export class Projects {
   @CreateDateColumn()
   created_at: Date;
 
+  @Column()
+  img1: string;
+
+  @Column()
+  img2: string;
+
   @OneToMany(() => Projects_Files, (projects) => projects.project_id)
   @JoinColumn()
   files: Projects_Files;

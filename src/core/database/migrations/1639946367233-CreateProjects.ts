@@ -18,6 +18,10 @@ export class CreateProjects1639946367233 implements MigrationInterface {
           { name: "user_id", type: "uuid" },
 
           { name: "created_at", type: "timestamp", default: "now()" },
+
+          { name: "img1", type: "varchar" },
+
+          { name: "img1", type: "varchar" },
         ],
         foreignKeys: [
           {

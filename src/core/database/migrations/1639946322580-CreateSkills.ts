@@ -16,6 +16,8 @@ export class CreateSkills1639946322580 implements MigrationInterface {
           { name: "user_id", type: "uuid" },
 
           { name: "created_at", type: "timestamp", default: "now()" },
+
+          { name: "imgurl", type: "varchar" },
         ],
         foreignKeys: [
           {

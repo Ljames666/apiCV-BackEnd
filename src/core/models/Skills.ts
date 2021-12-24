@@ -32,6 +32,9 @@ export class Skills {
   @CreateDateColumn()
   created_at: Date;
 
+  @Column()
+  imgurl: string;
+
   @OneToMany(() => Skills_Files, (skills) => skills.skill_id)
   @JoinColumn()
   files: Skills_Files[];
