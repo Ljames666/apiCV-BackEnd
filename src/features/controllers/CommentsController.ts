@@ -8,11 +8,11 @@ import {
 
 export class CreateCommentsController {
   async handle(request: Request, response: Response) {
-    const { name_user, message } = request.body;
+    const { name_user, message, user_id } = request.body;
 
     const service = new CreateCommentsService();
 
-    const result = await service.execute({ name_user, message });
+    const result = await service.execute({ name_user, message, user_id });
 
     if (result instanceof Error) {
       return response.status(400).json(result.message);
@@ -36,11 +36,11 @@ export class UpdateCommentsController {
   async handle(request: Request, response: Response) {
     const { id } = request.params;
 
-    const { name_user, message } = request.body;
+    const { name_user, message, user_id } = request.body;
 
     const service = new UpdateCommentsService();
 
-    const result = await service.execute({ id, name_user, message });
+    const result = await service.execute({ id, name_user, message, user_id });
 
     if (result instanceof Error) {
       return response.status(400).json(result.message);

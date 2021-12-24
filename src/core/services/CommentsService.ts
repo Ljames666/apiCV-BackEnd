@@ -4,22 +4,24 @@ import { Comments } from "../models/Comments";
 type CommentsRequest = {
   name_user: string;
   message: string;
+  user_id: string;
 };
 type UpdateCommentsRequest = {
   id: string;
   name_user: string;
   message: string;
+  user_id: string;
 };
 
 export class CreateCommentsService {
-  async execute({ name_user, message }: CommentsRequest): Promise<Comments | Error> {
+  async execute({ name_user, message, user_id }: CommentsRequest): Promise<Comments | Error> {
     const repository = getRepository(Comments);
 
     if (await repository.findOne({ name_user })) {
       return new Error(`Comments already exists`);
     }
 
-    const comments = repository.create({ name_user, message });
+    const comments = repository.create({ name_user, message, user_id });
 
     await repository.save(comments);
 
@@ -38,7 +40,12 @@ export class GetCommentsService {
 }
 
 export class UpdateCommentsService {
-  async execute({ id, name_user, message }: UpdateCommentsRequest): Promise<Comments | Error> {
+  async execute({
+    id,
+    name_user,
+    message,
+    user_id,
+  }: UpdateCommentsRequest): Promise<Comments | Error> {
     const repository = getRepository(Comments);
 
     const comments = await repository.findOne(id);
@@ -49,6 +56,7 @@ export class UpdateCommentsService {
 
     comments.name_user = name_user ? name_user : comments.name_user;
     comments.message = message ? message : comments.message;
+    comments.user_id = user_id ? user_id : comments.user_id;
 
     await repository.save(comments);
 
